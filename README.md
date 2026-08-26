@@ -1,6 +1,6 @@
 # FloraGestión
 
-Estructura inicial de un sistema de gestión para una pequeña florería, construida con React, Vite y React Router. Esta fase no incluye backend, base de datos, autenticación ni ABM.
+Sistema de gestión para una pequeña florería, construido con React, Vite y React Router. Flores, Clientes y Pedidos funcionan con datos en memoria; no incluye backend, base de datos ni autenticación.
 
 ## Desarrollo local
 
@@ -26,7 +26,7 @@ Para detener el servicio: `docker compose down`.
 - `src/components/`: layout, sidebar y encabezado compartidos.
 - `src/pages/`: inicio y páginas placeholder de cada módulo.
 - `Dockerfile`, `nginx.conf` y `docker-compose.yml`: entrega con Nginx en el puerto `8080`.
-- Pendiente: ABM de flores, clientes y pedidos, estado en memoria, validaciones y filtros.
+- Los pedidos relacionan clientes y flores mediante selectores, calculan el precio total automáticamente y permiten gestionar sus estados.
 
 Currently, two official plugins are available:
 

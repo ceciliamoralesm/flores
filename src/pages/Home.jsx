@@ -1,10 +1,14 @@
-const stats = [
-  { label: 'Flores', value: '0', icon: '✿', tone: 'green' },
-  { label: 'Clientes', value: '0', icon: '♧', tone: 'yellow' },
-  { label: 'Pedidos', value: '0', icon: '▤', tone: 'coral' },
-]
+import { useAppData } from '../context/useAppData.js'
 
 function Home() {
+  const { flowers, clients, orders } = useAppData()
+  const pendingOrders = orders.filter((order) => order.estado === 'Pendiente').length
+  const stats = [
+    { label: 'Flores', value: flowers.length, icon: '✿', tone: 'green' },
+    { label: 'Clientes', value: clients.length, icon: '♧', tone: 'yellow' },
+    { label: 'Pedidos', value: orders.length, icon: '▤', tone: 'coral' },
+    { label: 'Pendientes', value: pendingOrders, icon: '◷', tone: 'blue' },
+  ]
   return (
     <div className="page-enter">
       <section className="welcome-banner">

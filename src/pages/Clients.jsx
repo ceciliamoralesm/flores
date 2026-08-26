@@ -1,15 +1,9 @@
-import { useState } from 'react'
 import ClientForm from '../components/clients/ClientForm.jsx'
 import ClientTable from '../components/clients/ClientTable.jsx'
-
-const initialClients = [
-	{ id: 1, nombre: 'Valentina', apellido: 'Gómez', telefono: '11 4567-8901', correo: 'valentina.gomez@email.com', direccion: 'Av. Santa Fe 1240' },
-	{ id: 2, nombre: 'Martín', apellido: 'Ruiz', telefono: '11 4822-1634', correo: 'martin.ruiz@email.com', direccion: 'Calle Arenales 835' },
-	{ id: 3, nombre: 'Camila', apellido: 'Sosa', telefono: '11 4109-7282', correo: 'camila.sosa@email.com', direccion: 'Av. Cabildo 2198' },
-]
+import { useAppData } from '../context/useAppData.js'
 
 function Clients() {
-	const [clients, setClients] = useState(initialClients)
+	const { clients, setClients } = useAppData()
 	const [editingClient, setEditingClient] = useState(null)
 	const [isFormOpen, setIsFormOpen] = useState(false)
 
