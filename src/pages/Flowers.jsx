@@ -27,7 +27,7 @@ function Flowers() {
 		} else {
 			setFlowers((currentFlowers) => [
 				...currentFlowers,
-				{ id: currentFlowers.length + 1, ...flowerData },
+				{ id: Math.max(...currentFlowers.map((flower) => flower.id), 0) + 1, ...flowerData },
 			])
 		}
 		setEditingFlower(null)
@@ -36,6 +36,10 @@ function Flowers() {
 
 	function handleDelete(flower) {
 		setFlowers((currentFlowers) => currentFlowers.filter((item) => item.id !== flower.id))
+		if (editingFlower?.id === flower.id) {
+			setEditingFlower(null)
+			setIsFormOpen(false)
+		}
 	}
 
 	return (
