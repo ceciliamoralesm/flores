@@ -16,7 +16,7 @@ function Orders() {
 		} else {
 			setOrders((currentOrders) => [
 				...currentOrders,
-				{ id: currentOrders.length + 1, ...orderData },
+				{ id: Math.max(...currentOrders.map((order) => order.id), 0) + 1, ...orderData },
 			])
 		}
 		setEditingOrder(null)

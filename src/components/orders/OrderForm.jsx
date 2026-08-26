@@ -15,7 +15,7 @@ function OrderForm({ order, clients, flowers, onSave, onCancel }) {
   const [errors, setErrors] = useState({})
 
   const selectedFlower = flowers.find((flower) => flower.id === Number(formData.florId))
-  const total = selectedFlower ? parseInt(selectedFlower.precio, 10) * Number(formData.cantidad || 0) : 0
+  const total = selectedFlower ? selectedFlower.precio * Number(formData.cantidad || 0) : 0
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -27,7 +27,7 @@ function OrderForm({ order, clients, flowers, onSave, onCancel }) {
     const nextErrors = {}
     if (!clients.some((client) => client.id === Number(formData.clienteId))) nextErrors.clienteId = 'Selecciona un cliente.'
     if (!flowers.some((flower) => flower.id === Number(formData.florId))) nextErrors.florId = 'Selecciona una flor.'
-    if (Number(formData.cantidad) <= 0) nextErrors.cantidad = 'Debe ser un entero mayor a 0.'
+    if (!Number.isInteger(Number(formData.cantidad)) || Number(formData.cantidad) <= 0) nextErrors.cantidad = 'Debe ser un entero mayor a 0.'
     if (!formData.fecha) nextErrors.fecha = 'La fecha es obligatoria.'
     if (!statuses.includes(formData.estado)) nextErrors.estado = 'Selecciona un estado válido.'
     return nextErrors
