@@ -26,7 +26,7 @@ function Clients() {
 		} else {
 			setClients((currentClients) => [
 				...currentClients,
-				{ id: currentClients.length + 1, ...clientData },
+				{ id: Math.max(...currentClients.map((client) => client.id), 0) + 1, ...clientData },
 			])
 		}
 		setEditingClient(null)
@@ -34,7 +34,13 @@ function Clients() {
 	}
 
 	function handleDelete(client) {
-		setClients((currentClients) => currentClients.filter((item) => item.id !== client.id))
+		if (window.confirm(`¿Deseas eliminar al cliente "${client.nombre} ${client.apellido}"?`)) {
+			setClients((currentClients) => currentClients.filter((item) => item.id !== client.id))
+			if (editingClient?.id === client.id) {
+				setEditingClient(null)
+				setIsFormOpen(false)
+			}
+		}
 	}
 
 	return (

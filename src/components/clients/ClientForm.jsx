@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const emptyClient = { nombre: '', apellido: '', telefono: '', correo: '', direccion: '' }
-const emailPattern = /@/
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function ClientForm({ client, onSave, onCancel }) {
   const [formData, setFormData] = useState(client ? {
