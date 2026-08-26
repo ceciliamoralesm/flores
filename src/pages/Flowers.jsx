@@ -1,16 +1,10 @@
 import { useState } from 'react'
 import FlowerForm from '../components/flowers/FlowerForm.jsx'
 import FlowerTable from '../components/flowers/FlowerTable.jsx'
-
-const initialFlowers = [
-	{ id: 1, nombre: 'Rosa Roja', tipo: 'Rosa', color: 'Rojo', precio: 12.5, stock: 24 },
-	{ id: 2, nombre: 'Girasol', tipo: 'Girasol', color: 'Amarillo', precio: 9.75, stock: 18 },
-	{ id: 3, nombre: 'Tulipán', tipo: 'Tulipán', color: 'Rosa', precio: 11, stock: 12 },
-	{ id: 4, nombre: 'Lirio', tipo: 'Lirio', color: 'Blanco', precio: 14.25, stock: 9 },
-]
+import { useAppData } from '../context/useAppData.js'
 
 function Flowers() {
-	const [flowers, setFlowers] = useState(initialFlowers)
+	const { flowers, setFlowers } = useAppData()
 	const [editingFlower, setEditingFlower] = useState(null)
 	const [isFormOpen, setIsFormOpen] = useState(false)
 
