@@ -89,5 +89,7 @@ tbody tr:hover { background: #f8fbf6; }
 .empty-table { padding: 70px 20px; border: 1px dashed #bfd2c2; border-radius: 8px; color: var(--muted); text-align: center; background: rgba(255,253,247,.6); }
 .empty-table span { color: #b1c9af; font-size: 34px; }
 .empty-table p { margin: 12px 0 0; font-size: 14px; }
+.client-form-grid { grid-template-columns: repeat(4, 1fr); }
+.client-form-grid .wide-field { grid-column: span 2; }
 @media (max-width: 900px) { .form-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 560px) { .module-toolbar { align-items: flex-start; flex-direction: column; } .module-toolbar h2 { font-size: 27px; } .flower-form { padding: 20px 16px; } .form-grid { grid-template-columns: 1fr 1fr; gap: 13px; } .form-actions { flex-direction: column-reverse; } .form-actions button { width: 100%; } }
+@media (max-width: 560px) { .module-toolbar { align-items: flex-start; flex-direction: column; } .module-toolbar h2 { font-size: 27px; } .flower-form { padding: 20px 16px; } .form-grid, .client-form-grid { grid-template-columns: 1fr 1fr; gap: 13px; } .client-form-grid .wide-field { grid-column: span 2; } .form-actions { flex-direction: column-reverse; } .form-actions button { width: 100%; } }
